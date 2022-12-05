@@ -33,7 +33,7 @@ class SplashFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         lifecycleScope.launch (Dispatchers.Default){
-            delay(5000)
+            delay(2000)
             withContext(Dispatchers.Main){
                 val action = SplashFragmentDirections.actionNavigateToMovieList()
                 findNavController().navigate(action)

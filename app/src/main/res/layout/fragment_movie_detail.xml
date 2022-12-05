@@ -1,14 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".ui.MovieDetailFragment">
+
+
+<ImageView
+    android:id="@+id/image"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    android:src="@mipmap/ic_launcher"
+    app:layout_constraintBottom_toTopOf="@+id/title"
+    app:layout_constraintTop_toTopOf="parent"/>
+
+<TextView
+    android:id="@+id/title"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="title"
+    app:layout_constraintTop_toBottomOf="@+id/image"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    />
+
+<TextView
+    android:id="@+id/desc"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.MovieDetailFragment">
+    android:layout_height="wrap_content"
+    android:text="description"
+    app:layout_constraintTop_toBottomOf="@+id/title"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"/>
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
-
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

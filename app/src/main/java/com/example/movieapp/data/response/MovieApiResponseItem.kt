@@ -1,14 +1,14 @@
 package com.example.movieapp.data.response
 
 data class MovieApiResponseItem(
-    val actors: String,
-    val director: String,
-    val genres: List<String>,
-    val id: Int,
-    val plot: String,
-    val posterUrl: String,
-    val rating: Double,
+    var actors: String,
+    var director: String,
+    var genres: List<String>,
+    var id: Int,
+    var plot: String,
+    var posterUrl: String,
+    var  rating: Double,
     val runtime: Int,
-    val title: String,
-    val year: Int
+    var title: String,
+    var year: Int
 )
