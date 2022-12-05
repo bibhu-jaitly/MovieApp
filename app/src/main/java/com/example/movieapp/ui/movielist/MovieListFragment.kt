@@ -68,11 +68,9 @@ class MovieListFragment : Fragment() {
     private fun setObservers() {
         viewModel.movieListData.observe(viewLifecycleOwner) { list ->
             list?.let {
-                Log.d("enterUpdate", "enter")
                 canLoadMyFeed = true
                 movieAdapter.submitList(it)
             }
-
         }
     }
 

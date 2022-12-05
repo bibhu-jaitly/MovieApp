@@ -39,7 +39,6 @@ class MainViewModel @Inject constructor(private val networkRepository: NetworkRe
                 if (response.body()?.size != 0) {
                     pageNumber++
                 }
-                Log.d("innerChk****", "enter ${response.body()?.size}  page $pageNumber")
                 val list = mutableListOf<MovieApiResponseItem>()
                 _movieListData.value?.toMutableList()?.let { list.addAll(it) }
                 response.body()?.toMutableList()?.let { list.addAll(it) }
@@ -59,24 +58,16 @@ class MainViewModel @Inject constructor(private val networkRepository: NetworkRe
                     if (response.isSuccessful) {
                         val ratingList = mutableListOf<RatingListResponseItem>()
                         response.body()?.toMutableList()?.let { ratingList.addAll(it) }
-                        val list = _movieListData.value
+                        val list = mutableListOf<MovieApiResponseItem>()
+                        _movieListData.value?.let { list.addAll(it.toMutableList()) }
                         ratingList?.forEach { ratingItem ->
                             val movieApiResponseItem = list?.find { it.id == ratingItem.id }
                             movieApiResponseItem?.let {
-                                Log.d("ratingTest***", "old : ${it.rating} new : ${ratingItem.rating}")
                                 it.rating = ratingItem.rating
                             }
-                            /*list?.forEach { movieItem ->
-                                if (ratingItem.id == movieItem.id) {
-                                    movieItem.rating = ratingItem.rating
-                                }
-                            }*/
                         }
                         withContext(Dispatchers.Main) {
-                            list?.let {
-                                Log.d("update*****", "listUpdate")
-                                _movieListData.postValue(it)
-                            }
+                            _movieListData.postValue(list)
                         }
                     } else {
                         Log.d("ratingError****", "${response.errorBody()}")
